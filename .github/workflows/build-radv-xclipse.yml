@@ -25,13 +25,10 @@ jobs:
             pkg-config \
             python3-mako \
             python3-pip \
-            libdrm-dev \
-            libwayland-dev \
-            wayland-protocols \
-            libx11-dev \
-            libxcb-dri3-dev \
-            libxshmfence-dev \
+            flex \
+            bison \
             glslang-tools
+          sudo apt-get build-dep -y mesa
 
       - name: Prepare prefix and build
         run: |
