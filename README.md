@@ -21,6 +21,33 @@ Fallback attempts either freeze the phone or result in "ghost rendering" (GPU wo
 
 Get a working Vulkan driver for the Xclipse 920 in a non-root Termux environment, and eventually take advantage of root for direct /dev/dri access and zero-copy DMA-BUF.
 
+## How to Build
+
+```bash
+cd ~/mesa_src
+git checkout -- src/vulkan/wsi/wsi_common_x11.c
+rm -rf build
+meson setup build \
+  --prefix=$PREFIX \
+  -Dplatforms=x11 \
+  -Dvulkan-drivers=amd \
+  -Dgallium-drivers=zink \
+  -Dbuildtype=release
+cd build && ninja install
+```
+
+## How to Load and Test the Driver
+
+```bash
+termux-x11 :0 -ac &
+sleep 2
+export DISPLAY=:0
+export VK_ICD_FILENAMES=/data/data/com.termux/files/usr/share/vulkan/icd.d/radeon_icd.aarch64.json
+export GALLIUM_DRIVER=zink
+unset MESA_LOADER_DRIVER_OVERRIDE
+es2gears_x11
+```
+
 ## Notes
 
 This is very much a work in progress / research project. Lots of reverse engineering and dirty hacks involved.
