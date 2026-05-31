@@ -41,7 +41,11 @@ jobs:
             -Dplatforms=x11 \
             -Dvulkan-drivers=amd \
             -Dgallium-drivers=zink \
-            -Dbuildtype=release
+            -Dbuildtype=release 2>&1 | tee /tmp/meson-log.txt || {
+            echo '=== MESON LOG ==='
+            cat /tmp/meson-log.txt
+            exit 1
+          }
           cd build
           ninja install
 
