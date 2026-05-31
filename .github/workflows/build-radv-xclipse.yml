@@ -29,7 +29,9 @@ jobs:
             python3-pip \
             flex \
             bison \
-            glslang-tools
+            glslang-tools \
+            libxfixes-dev \
+            libxdamage-dev
           sudo apt-get build-dep -y mesa
 
       - name: Prepare prefix and build
