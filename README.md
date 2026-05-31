@@ -25,4 +25,6 @@ Get a working Vulkan driver for the Xclipse 920 in a non-root Termux environment
 
 This is very much a work in progress / research project. Lots of reverse engineering and dirty hacks involved.
 
+**Note from the author:** I'm not the best at this and would really appreciate any help or suggestions. I'll keep trying my best though.
+
 More details in the commit history.
