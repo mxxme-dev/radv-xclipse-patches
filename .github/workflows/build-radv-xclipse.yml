@@ -30,7 +30,8 @@ jobs:
             wayland-protocols \
             libx11-dev \
             libxcb-dri3-dev \
-            libxshmfence-dev
+            libxshmfence-dev \
+            glslang-tools
 
       - name: Prepare prefix and build
         run: |
@@ -41,11 +42,7 @@ jobs:
             -Dplatforms=x11 \
             -Dvulkan-drivers=amd \
             -Dgallium-drivers=zink \
-            -Dbuildtype=release 2>&1 | tee /tmp/meson-log.txt || {
-            echo '=== MESON LOG ==='
-            cat /tmp/meson-log.txt
-            exit 1
-          }
+            -Dbuildtype=release
           cd build
           ninja install
 
