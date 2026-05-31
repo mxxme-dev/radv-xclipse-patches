@@ -45,8 +45,9 @@ export DISPLAY=:0
 export VK_ICD_FILENAMES=/data/data/com.termux/files/usr/share/vulkan/icd.d/radeon_icd.aarch64.json
 export GALLIUM_DRIVER=zink
 unset MESA_LOADER_DRIVER_OVERRIDE
-es2gears_x11
 ```
+
+Then run any Vulkan app you want to test.
 
 ## Notes
 
